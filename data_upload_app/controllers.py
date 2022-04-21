@@ -14,6 +14,9 @@ jinja_env = templates.env
 def index(request: Request):
     return templates.TemplateResponse('index.html', {'request': request})
 
+def preview(request: Request):
+    return templates.TemplateResponse('preview.html', {'request': request})
+
 def style(request: Request):
     return templates.TemplateResponse('style.css', {'request': request})
 

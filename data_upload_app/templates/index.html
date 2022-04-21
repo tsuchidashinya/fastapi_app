@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="http://127.0.0.1:8000/style_main" crossorigin="anonymous">
 {% endblock %}
 {% block content %}
+
 <header>
   <div class="header-title">ファイル入出力アプリ</div>
   <div class="header-omake">
@@ -11,10 +12,20 @@
   </div>
 </header>
 <main>
-  <!-- <div class="main-user">ユーザー名<input class="user-input"></div>
-  <div class="main-password">パスワード<input class="password-input"></div> -->
-  <div class="submit"><input class="login" type="submit" value="ファイル保存"></div>
-  <div class="submit"><input class="login" type="submit" value="ファイル閲覧"></div>
+  
+  <div class="main-user">ユーザー名<input class="user-input">{{ message }}</div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+  </script>
+  <div class="main-password">パスワード<input class="password-input"></div> 
+  <!-- div class="submit"><input class="login" type="submit" value="ファイル保存"></div>
+  <div class="submit"><input class="login" type="submit" value="ファイル閲覧"></div-->
+  
 </main>
 <footer></footer>
     
