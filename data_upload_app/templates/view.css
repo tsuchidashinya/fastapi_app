@@ -1,0 +1,35 @@
+.home {
+    width: 100%;
+    margin: 0 auto;
+}
+#A {
+    position: fixed;
+    top: 0; left: 0;
+    height:150px;
+    width: 100%;
+    background-color:#009b9f;
+    }
+#fix {
+    position: fixed;
+    top: 0; left: 0;
+    background-color: green;
+}
+
+.next {
+   
+    font-size: large;
+    
+}
+/* h1 {
+    color: #ffffff;
+} */
+
+body {
+    background: #ffffff;
+    color: #000000;
+    margin: 0 auto;
+}
+
+p {
+    color: #000000;
+}
