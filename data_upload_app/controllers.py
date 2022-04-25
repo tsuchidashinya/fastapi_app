@@ -1,11 +1,24 @@
 from fastapi import FastAPI
 from starlette.requests import Request
 from starlette.templating import Jinja2Templates
+from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title='Fast API application',
     description="It`s great tutorial",
     version='0.9 beta'
+)
+
+origins = [
+    "http://localhost:8080"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 templates = Jinja2Templates(directory='templates')
