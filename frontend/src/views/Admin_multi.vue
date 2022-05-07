@@ -5,16 +5,25 @@
         </header>
         <main>
             <div class="main-user">ユーザー名<input class="user-input"></div>
-            <div class="main-password">パスワード<input class="password-input"></div>
-            <div class="submit"><input class="login" type="submit" value="ログイン"></div>
+            <div class="main-password">パスワード<input class="password-input" id="tsuchida_id"></div>
+            <div class="submit1"><input class="login" type="submit" value="ログイン" @click="home"></div>
             <div class="submit"><input class="login" type="submit" value="新規登録"></div>
         </main>
-        <footer></footer>
+        <footer>
+          <!-- <router-link :to="{ name: 'home', params: { prop1: 'huge11', tsuchida: 'tsuchida'} }" >fdffdfd</router-link> -->
+        </footer>
+        
     </div>
 </template>
 
 <script>
-
+export default {
+  methods: {
+    home() {
+      this.$router.push({ name: 'home', params: {tsuchida: document.getElementById("tsuchida_id").value}})
+    }
+  }
+}
 </script>
 
 <style>
@@ -78,13 +87,19 @@ li {
   height: 30px;
 }
 
+.submit1 {
+  text-align: center;
+  margin-top: 40px;
+}
+
 .submit {
  text-align: center;
-  margin-top: 20px;;
+  margin-top: 25px;;
 }
 
 .login {
-  height: 40px;
+  height: 50px;
+  font-size: 25px;
 }
 
 main {

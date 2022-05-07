@@ -21,24 +21,16 @@ const routes = [
   {
     path: '/propTest',
     name: 'proptest',
-    props: {
-      // 複数ある場合はそれぞれに設定。"component:"の場合はprops:trueとか
-      default: true,
-      slot1: true
-    },
-    components:{
-      default: () =>
-        import(/* webpackChunkName: "propTest" */ '../views/PageComponent1.vue')
-      // slot1: () =>
-      //   import(/* webpackChunkName: "propTest" */ './views/PageComponent2.vue')
-    }
+    component: () => import('../views/PageComponent1.vue'),
+    props: true,
+
   },
   {
-    path: "/propTest2",
+    path: "/propTest24",
     name: 'proptest2',
     props: true,
-    components: () => import('../views/PageComponent2.vue')
-  }
+    component: () => import( '../views/PageComponent2.vue'),
+  },
 ]
 
 const router = new VueRouter({
@@ -47,4 +39,4 @@ const router = new VueRouter({
   routes
 })
 
-export default router
+export default router;
