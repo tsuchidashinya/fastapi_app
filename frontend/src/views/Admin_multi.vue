@@ -4,10 +4,11 @@
             <div class="header-title">ログイン画面</div>
         </header>
         <main>
-            <div class="main-user">ユーザー名<input class="user-input"></div>
-            <div class="main-password">パスワード<input class="password-input" id="tsuchida_id"></div>
-            <div class="submit1"><input class="login" type="submit" value="ログイン" @click="home"></div>
-            <div class="submit"><input class="login" type="submit" value="新規登録"></div>
+            <div class="main-user">ユーザー名<input class="user-input" id="tsuchida_name"></div>
+            <div class="main-password">パスワード<input type="password" class="password-input" id="tsuchida_id" @keyup.enter="post_data"></div>
+            <div class="message">{{ result }}</div>
+            <div class="submit1"><input class="login" type="submit" value="ログイン" @click="post_data"></div>
+            
         </main>
         <footer>
           <!-- <router-link :to="{ name: 'home', params: { prop1: 'huge11', tsuchida: 'tsuchida'} }" >fdffdfd</router-link> -->
@@ -17,13 +18,56 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
+  data() {
+    return {
+      result: "      "
+    };
+  },
+
   methods: {
+   
+    
     home() {
       this.$router.push({ name: 'home', params: {tsuchida: document.getElementById("tsuchida_id").value}})
+    },
+    post_data() {
+      axios
+        .post("http://192.168.0.9:8000/data/", {
+          username: document.getElementById("tsuchida_name").value,
+          password: document.getElementById("tsuchida_id").value
+        })
+        .then(
+          function(response) {
+            console.log(response.data.password)
+            // this.result=response.data.user;
+            if (response.data.user != null && response.data.password != null)
+              this.$router.push({ name: 'home', params: {tsuchida: response.data.user}})
+            else {
+              if (response.data.user == null) {
+                this.result = "ユーザーが存在しません！！";
+                document.getElementById("tsuchida_name").value = "";
+                document.getElementById("tsuchida_id").value = "";
+              }
+              else if (response.data.password == null) {
+                this.result = "パスワードが間違っています！！";
+                document.getElementById("tsuchida_id").value = "";
+              }
+            }
+          }.bind(this)
+        )
+        .catch(
+          function(error) {
+            console.log(error);
+          }.bind(this)
+        );
+
     }
   }
 }
+
 </script>
 
 <style>

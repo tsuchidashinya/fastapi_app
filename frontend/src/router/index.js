@@ -9,11 +9,22 @@ const routes = [
         props: true
     },
     {
-        path: '/',
+        path: '/home',
         name: 'home',
         component: () => import('../views/HomeView.vue'),
         props: true
-    }
+    },
+    {
+        path: '/register',
+        name: 'register1',
+        component: () => import('../views/Register_multi.vue'),
+        props: true
+    },
+    {
+        path: '/',
+        name: '/first_window',
+        component: () => import('../views/first_window.vue')
+    },
 ]
 
 const router = createRouter({

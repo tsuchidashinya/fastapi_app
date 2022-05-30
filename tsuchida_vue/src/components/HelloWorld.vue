@@ -45,7 +45,7 @@ export default {
         )
         .catch(
           function(error) {
-            this.result = "GETエラー";
+            this.result = "GETエラー1";
             console.log(error);
           }.bind(this)
         );
@@ -78,7 +78,13 @@ export default {
         })
         .then(
           function(response) {
-            this.result = response.data.message;
+            // this.result = response.data.message;
+            // if (response.data.mess1==null) {
+            //   this.result = "None";
+            // }
+            // else
+            //   this.result = response.data.mess1;
+            this.result = response.data.data
             console.log(response);
           }.bind(this)
         )

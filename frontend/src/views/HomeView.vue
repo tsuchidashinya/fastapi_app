@@ -1,26 +1,45 @@
 <template>
   <header>
-  <div class="header-title">ファイル入出力アプリ</div>
+  <div class="header-title">{{tsuchida}}さんの掲示板</div>
   <div class="header-omake">
     <a href="admin1">ログイン</a>
-    <a>新規登録</a>
+    <a href="register">新規登録</a>
   </div>
 </header>
 <main>
-  
-  <div class="submit"><input class="login" type="submit" value="ファイル保存"></div>
-  <div class="submit"><input class="login" type="submit" value="ファイル閲覧"></div>
-  
-  <div class="tsuchida">{{tsuchida}}</div>
+  <div class="tsuchida">{{tsuchida}}はこれからの時代、どうやって生きていけばいいのか、日々模索している</div>
+  <div class="naoki"></div>
+  <div class="input-tag">
+    <textarea class="text-input">初期値</textarea>
+  </div>
+  <div class="input-tag">
+    <div class="button-multi">
+      <label for="file_photo" class="file_photo1">
+        <img class="image" src="../assets/simple.png">
+        <input type="file" id="file_photo" style="display:none;">
+        
+      </label>
+      <input type="button" value="送信" class="sousin">
+    </div>
+  </div>
 </main>
 <footer></footer>
 </template>
+
 <script>
+import $ from 'jquery'
 export default {
   props: {
     tsuchida: {
       type: String,
       require: true
+    }
+  },
+  methods: {
+    click() {
+      for (var i = 0; i < 5; i++) {
+        $(".tsuchida").eq(0).clone().appendTo(".naoki")
+      }
     }
   }
 }
@@ -28,17 +47,68 @@ export default {
 </script>
 
 <style>
-  .tsuchida {
-    font-size: 30px;
-  }
-  body {
-    font-family: "Avenir Next";
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
+
+.input-tag {
+  float: left;
+  width: 100%;
+}
+
+.file_photo1 {
+  float: left;
+  margin-left: 20%;
+  /* border: thin solid grey; */
+  height: 34px;
+  width: 20;
+}
+.image {
+  /* margin-top: 30px; */
+  /* border: thin solid grey; */
+  margin-left: 0%;
+  height: 34px;
+  float: left;
+}
+.sousin {
+  margin-right: 18%;
+  /* margin-right: 20%; */
+  float: right;
+  height: 34px;
+  width: 50px;
+  border: thin solid grey;
+}
+.button-multi {
+  /* padding-left: 20%; */
+  /* padding-right: 20%; */
+  height: 35px;
+  width: 20.25%;
+  border: thin solid grey;
+  margin-left: 40%;
+  float: left;
+}
+.text-input {
+  height: 100px;
+  width: 20%;
+  border: thin solid grey;
+  border-bottom: 0px none;
+  resize: none;
+  margin-left: 40%;
+  font-size: large;
+  float: left;
+}
+.tsuchida {
+  font-size: 30px;
+  /* border: medium solid green; */
+  width: 50%;
+  height: auto;
+  margin-left: 25%;
+}
+body {
+  font-family: "Avenir Next";
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
 }
 header {
-    background-color: red;
+    background-color: rgb(238, 93, 57);
     height: 60px;
     margin: 0;
     padding-left: 3cm;
@@ -46,13 +116,6 @@ header {
     padding: 10px 10px;
     color: rgb(10, 3, 3);
 }
-
-/* li {
-    list-style: none;
-    /* 以下の2行を削除してください */
-    /* float: left;
-    padding: 33px 20px;
-}  */
 
 .header-title {
     margin: 0;
@@ -76,49 +139,10 @@ header {
     /* border: medium solid black; */
 }
 
-.main-user {
-    /* padding-top: 170px; */
-    /* padding-left: 40%;
-    padding-bottom: 0; */
-    text-align: center;
-    font-size: 20px;
-    color: black;
-    /* border: medium solid black; */
-}
-
-.user-input {
-margin-left: 20px;
-height: 30px;
-}
-
-.main-password {
-text-align: center;
-margin-top: 15px;
-/* border: medium solid black; */
-/* padding-left: 40%; */
-color: black;
-font-size: 20px;
-}
-
-.password-input {
-margin-left: 20px;
-height: 30px;
-}
-
-.submit {
-text-align: center;
-margin-top: 20px;;
-}
-
-.login {
-margin-top: 20px;
-height: 60px;
-font-size: 30px;
-}
 
 main {
 /* margin-left: 40%; */
-margin-top: 100px;
+margin-top: 20px;
 /* border: medium solid black; */
 }
 </style>
