@@ -1,7 +1,9 @@
+from datetime import date
+from tkinter.messagebox import NO
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
-from sqlalchemy import Column, create_engine
+from sqlalchemy import BLOB, VARCHAR, Column, create_engine
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.types import Integer, String
@@ -23,7 +25,18 @@ class Tsuchida_data(Base):
         self.user_name = user_name
         self.password = password
 
+class Main_data(Base):
+    __tablename__ = "main_data"
+    user_name = Column(String(255), primary_key=True)
+    large_file = Column(BLOB)
+    text_data = Column(String(1024))
+    time_date = Column(date)
 
+    def __init__(self, user_name, large_file=None, text_data=None, time_data=None):
+        self.user_name = user_name
+        self.large_file = large_file
+        self.text_data = text_data
+        self.time_date = time_data
 
 Base.metadata.create_all(engine)
 SessionClass = sessionmaker(engine)
