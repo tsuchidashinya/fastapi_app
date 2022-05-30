@@ -12,16 +12,18 @@
   <div class="input-tag">
     <textarea class="text-input">初期値</textarea>
   </div>
+  
   <div class="input-tag">
     <div class="button-multi">
       <label for="file_photo" class="file_photo1">
         <img class="image" src="../assets/simple.png">
-        <input type="file" id="file_photo" style="display:none;">
+        <input type="file" id="file_photo" style="display:none;" @click="click">
         
       </label>
-      <input type="button" value="送信" class="sousin">
+      <input type="button" value="送信" class="sousin" >
     </div>
   </div>
+  {{result}}
 </main>
 <footer></footer>
 </template>
@@ -35,11 +37,24 @@ export default {
       require: true
     }
   },
+  data() {
+    return { result: this.tsuchida + "です。"};
+  },
   methods: {
+    // post_data() {
+    //   axios
+    //   .post("http://192.168.0.9:8000/main_data", {
+    //     username: this.tsuchida
+    //   })
+    //   .then(
+    //     function(response) {
+
+    //     }
+    //   )
+    // }
     click() {
-      for (var i = 0; i < 5; i++) {
-        $(".tsuchida").eq(0).clone().appendTo(".naoki")
-      }
+      const fileInput = document.getElementById("file_photo")
+      
     }
   }
 }
